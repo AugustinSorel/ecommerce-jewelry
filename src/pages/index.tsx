@@ -8,8 +8,8 @@ export default function Home() {
         <meta
           name="description"
           content="Buy the best jewelry ever on this site"
-        ></meta>
-        <link rel="icon" href="/favicon.ico"></link>
+        />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <h1>super</h1>
