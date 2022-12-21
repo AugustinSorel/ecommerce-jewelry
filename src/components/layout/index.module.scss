@@ -1,0 +1,126 @@
+@mixin title {
+  h1 {
+    flex: 1;
+    text-transform: uppercase;
+
+    &::first-letter {
+      color: var(--yellow-9);
+    }
+  }
+}
+
+@mixin nav {
+  nav {
+    border-right: 1px solid currentColor;
+
+    a {
+      text-transform: capitalize;
+      transition: color 250ms var(--ease-elastic-2);
+      margin-right: var(--size-6);
+      outline: none;
+
+      &:last-of-type {
+        margin-right: var(--size-8);
+      }
+
+      &::before {
+        content: "";
+        display: inline-block;
+      }
+
+      &:focus-visible,
+      &:hover {
+        color: var(--yellow-9);
+      }
+    }
+
+    .active-link {
+      text-decoration: underline;
+      color: var(--yellow-9);
+    }
+
+    @media screen and (max-width: 1000px) {
+      display: none;
+    }
+  }
+}
+
+@mixin button {
+  button {
+    height: var(--size-4);
+    border: none;
+    aspect-ratio: var(--ratio-square);
+    margin-left: var(--size-6);
+    cursor: pointer;
+    outline: none;
+
+    &:first-of-type {
+      margin-left: var(--size-8);
+    }
+
+    svg {
+      transition-property: fill, scale;
+      transition-duration: 250ms;
+      transition-timing-function: var(--ease-elastic-2);
+
+      &:focus-visible,
+      &:hover {
+        fill: var(--yellow-9);
+        scale: 1.1;
+      }
+    }
+
+    &[aria-label="menu"] {
+      display: none;
+
+      path {
+        transition: d 250ms ease;
+
+        &.open {
+          d: path(
+            "M 5 3 L 21 19 Q 21 21 19 21 L 3 5 Q 3 3 5 3 Z M 3 19 L 19 3 Q 21 3 21 5 L 5 21 Q 3 21 3 19 Z"
+          );
+        }
+      }
+    }
+
+    &[aria-label="cart"] {
+      position: relative;
+
+      &::after {
+        content: "12";
+        position: absolute;
+        top: -75%;
+        right: -75%;
+        background-color: var(--yellow-9);
+        color: var(--gray-1);
+        border-radius: 50%;
+        padding: var(--size-1);
+      }
+    }
+
+    @media screen and (max-width: 1000px) {
+      display: none;
+
+      &[aria-label="cart"],
+      &[aria-label="menu"] {
+        display: block;
+      }
+    }
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--size-4);
+
+  @include title;
+  @include nav;
+  @include button;
+}
+
+.main {
+  max-width: var(--size-xl);
+  margin: 0 auto;
+}
