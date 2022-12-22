@@ -88,14 +88,18 @@
       position: relative;
 
       &::after {
-        content: "12";
+        content: attr(data-number-of-items);
         position: absolute;
         top: -75%;
         right: -75%;
+        aspect-ratio: var(--ratio-square);
+        height: var(--size-4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: var(--yellow-9);
         color: var(--gray-1);
         border-radius: 50%;
-        padding: var(--size-1);
       }
     }
 
