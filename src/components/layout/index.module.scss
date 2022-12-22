@@ -47,27 +47,13 @@
 
 @mixin button {
   button {
-    height: var(--size-4);
     border: none;
-    aspect-ratio: var(--ratio-square);
     margin-left: var(--size-6);
     cursor: pointer;
     outline: none;
 
     &:first-of-type {
       margin-left: var(--size-8);
-    }
-
-    svg {
-      transition-property: fill, scale;
-      transition-duration: 250ms;
-      transition-timing-function: var(--ease-elastic-2);
-
-      &:focus-visible,
-      &:hover {
-        fill: var(--yellow-9);
-        scale: 1.1;
-      }
     }
 
     &[aria-label="menu"] {
@@ -114,14 +100,59 @@
   }
 }
 
+@mixin svg {
+  svg {
+    transition-property: fill, scale;
+    transition-duration: 250ms;
+    transition-timing-function: var(--ease-elastic-2);
+    aspect-ratio: var(--ratio-square);
+    height: var(--size-4);
+
+    &:focus-visible,
+    &:hover {
+      fill: var(--yellow-9);
+      scale: 1.1;
+    }
+  }
+}
+
+@mixin searchForm {
+  form {
+    display: none;
+    align-items: center;
+    background-color: var(--gray-3);
+    padding: var(--size-3);
+    margin-top: var(--size-2);
+    border-radius: var(--radius-2);
+    flex-basis: 100%;
+    gap: var(--size-3);
+
+    input {
+      background-color: transparent;
+      border: none;
+      font-size: var(--font-size-2);
+      font-weight: var(--font-weight-3);
+      outline: none;
+      width: 100%;
+    }
+
+    @media screen and (max-width: 1000px) {
+      display: flex;
+    }
+  }
+}
+
 .header {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   margin-bottom: var(--size-4);
 
   @include title;
   @include nav;
   @include button;
+  @include svg;
+  @include searchForm;
 }
 
 .main {
