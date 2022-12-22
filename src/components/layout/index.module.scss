@@ -76,8 +76,8 @@
       &::after {
         content: attr(data-number-of-items);
         position: absolute;
-        top: -75%;
-        right: -75%;
+        top: -60%;
+        right: -60%;
         aspect-ratio: var(--ratio-square);
         height: var(--size-4);
         display: flex;
