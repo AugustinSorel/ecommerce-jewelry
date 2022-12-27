@@ -165,7 +165,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         toggleIsMobileMenuOpen={toggleIsMobileMenuOpen}
       />
       <main>{isMobileMenuOpen ? <MobileMenu /> : children}</main>
-      <Footer />
+      {!isMobileMenuOpen && <Footer />}
     </>
   );
 };
