@@ -67,6 +67,7 @@ const HomePageCarousel = () => {
       <nav className={styles["dots-container"]}>
         {[...Array(productsCarousel.length)].map((_, index) => (
           <button
+            aria-label={`go to ${index + 1} slides`}
             key={index}
             className={`${styles["dot"]} ${
               currentIndex === index ? styles["active"] : ""
