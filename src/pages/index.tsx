@@ -1,4 +1,5 @@
 import Head from "next/head";
+import HomePageCarousel from "../components/homePageCarousel";
 
 export default function Home() {
   return (
@@ -12,107 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
-      <h1>super</h1>
+      <HomePageCarousel />
     </>
   );
 }
