@@ -1,16 +1,10 @@
 @mixin svg {
   svg {
-    transition-property: fill, scale;
+    transition-property: fill;
     transition-duration: 250ms;
     transition-timing-function: var(--ease-elastic-2);
     aspect-ratio: var(--ratio-square);
     height: var(--size-4);
-
-    &:focus-visible,
-    &:hover {
-      fill: var(--yellow-9);
-      scale: 1.1;
-    }
   }
 }
 
@@ -72,6 +66,15 @@
     cursor: pointer;
     outline: none;
     background-color: transparent;
+
+    transition-property: scale;
+    transition-duration: 250ms;
+    transition-timing-function: var(--ease-elastic-2);
+    &:focus-visible,
+    &:hover {
+      fill: var(--yellow-9);
+      scale: 1.1;
+    }
 
     &[aria-label="menu"] {
       display: none;
@@ -220,7 +223,7 @@
     button {
       background-color: transparent;
       border: none;
-      padding: 0 var(--size-2);
+      padding-left: var(--size-3);
       cursor: pointer;
     }
 
