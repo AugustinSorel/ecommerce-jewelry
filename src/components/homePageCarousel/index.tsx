@@ -14,10 +14,9 @@ const Slide = ({ product }: { product: Product }) => {
       <Image
         src={product.slide}
         alt={product.text}
-        width={1000}
-        height={1000}
         priority
         className={styles["slide-image"]}
+        fill
       />
       <h2 className={styles["slide-text"]}>{product.text}</h2>
       <p className={styles["slide-price"]}>{product.price}</p>
