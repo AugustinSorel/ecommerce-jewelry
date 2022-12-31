@@ -220,6 +220,8 @@
     button {
       background-color: transparent;
       border: none;
+      padding: 0 var(--size-2);
+      cursor: pointer;
     }
 
     @media screen and (max-width: 1000px) {
@@ -232,6 +234,7 @@
 
     a {
       text-transform: uppercase;
+      padding: var(--size-1) 0;
 
       &:not(:first-child) {
         margin-left: var(--size-6);
