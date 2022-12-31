@@ -54,8 +54,10 @@ const HomePageCarousel = () => {
       <ul
         className={styles["carousel"]}
         style={{
-          ["--current-index" as any]: currentIndex,
-          ["--number-of-slides" as any]: productsCarousel.length,
+          width: `calc(100% * ${productsCarousel.length})`,
+          translate: `calc(${currentIndex * -1} * 100% / ${
+            productsCarousel.length
+          })`,
         }}
       >
         {productsCarousel.map((product) => (

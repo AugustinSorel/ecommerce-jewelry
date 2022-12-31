@@ -42,8 +42,6 @@
   display: flex;
   height: 100%;
   transition: translate ease-out 0.3s;
-  width: calc(100% * var(--number-of-slides));
-  translate: calc(var(--current-index) * -1 * 100% / var(--number-of-slides));
 }
 
 .slide-image {
