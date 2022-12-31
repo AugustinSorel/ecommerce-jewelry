@@ -1,6 +1,6 @@
 @mixin svg {
   svg {
-    transition-property: fill;
+    transition-property: fill, scale;
     transition-duration: 250ms;
     transition-timing-function: var(--ease-elastic-2);
     aspect-ratio: var(--ratio-square);
@@ -67,13 +67,12 @@
     outline: none;
     background-color: transparent;
 
-    transition-property: scale;
-    transition-duration: 250ms;
-    transition-timing-function: var(--ease-elastic-2);
     &:focus-visible,
     &:hover {
-      fill: var(--yellow-9);
-      scale: 1.1;
+      svg {
+        scale: 1.1;
+        fill: var(--yellow-9);
+      }
     }
 
     &[aria-label="menu"] {
