@@ -5,6 +5,7 @@
   margin: 0 auto;
   overflow: hidden;
   margin-top: var(--size-4);
+  border-radius: var(--border-size-4);
 
   @media screen and (max-width: 1000px) {
     height: 400px;
@@ -41,12 +42,11 @@
 .carousel {
   display: flex;
   height: 100%;
-  transition: translate ease-out 0.3s;
+  transition: translate ease-out 250ms;
 }
 
 .slide-image {
   object-fit: cover;
-  border-radius: var(--border-size-4);
   width: 100%;
   height: 100%;
   min-width: 0;
