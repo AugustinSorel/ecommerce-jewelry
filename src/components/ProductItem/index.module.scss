@@ -44,26 +44,27 @@
     color: var(--yellow-9);
 
     &::after {
-      width: 100%;
+      opacity: 1;
     }
   }
 
   &::after {
     content: "";
     position: absolute;
-    background-color: var(--yellow-9);
+    background-color: currentColor;
     bottom: 0;
     left: 0;
-    width: 0;
+    width: 100%;
     height: 1px;
-    transition-property: width;
+    opacity: 0;
+    transition-property: opacity;
     transition-duration: 250ms;
     transition-timing-function: var(--ease-2);
   }
 }
 
 .product-price {
-  color: var(--yellow-9);
+  color: var(--yellow-11);
   margin-top: var(--size-1);
 }
 
