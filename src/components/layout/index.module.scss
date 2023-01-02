@@ -5,12 +5,6 @@
     transition-timing-function: var(--ease-elastic-2);
     aspect-ratio: var(--ratio-square);
     height: var(--size-4);
-
-    &:focus-visible,
-    &:hover {
-      fill: var(--yellow-9);
-      scale: 1.1;
-    }
   }
 }
 
@@ -21,7 +15,7 @@
   z-index: var(--layer-4);
   background-color: var(--gray-0);
   top: 0;
-  padding-top: var(--size-4);
+  padding: var(--size-4) 0;
 
   @include svg;
 
@@ -72,6 +66,14 @@
     cursor: pointer;
     outline: none;
     background-color: transparent;
+
+    &:focus-visible,
+    &:hover {
+      svg {
+        scale: 1.1;
+        fill: var(--yellow-9);
+      }
+    }
 
     &[aria-label="menu"] {
       display: none;
@@ -214,13 +216,13 @@
       font-size: var(--font-size-1);
       outline: none;
       padding: var(--size-1);
-      width: 250px;
+      width: min(250px, 75vw);
     }
 
     button {
       background-color: transparent;
       border: none;
-      padding: 0 var(--size-2);
+      padding-left: var(--size-3);
       cursor: pointer;
     }
 

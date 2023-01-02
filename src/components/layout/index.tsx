@@ -120,8 +120,8 @@ const Footer = () => {
       </form>
 
       <p>
-        © <strong>2021 Shelly.</strong> Terms of use <strong>and</strong>{" "}
-        privacy policy.
+        © <strong>{new Date().getFullYear()} Augustin.</strong> Terms of use{" "}
+        <strong>and</strong> privacy policy.
       </p>
 
       <div>

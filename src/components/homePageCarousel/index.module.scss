@@ -4,7 +4,6 @@
   height: 700px;
   margin: 0 auto;
   overflow: hidden;
-  margin-top: var(--size-4);
   border-radius: var(--border-size-4);
   background-color: var(--stone-4);
   background: linear-gradient(90deg, var(--stone-4) 0%, var(--stone-3) 100%);
@@ -33,23 +32,42 @@
   background-color: var(--gray-0);
   border-radius: var(--radius-round);
   border: none;
+  transition-property: scale, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: var(--ease-elastic-2);
+  outline: none;
 
   &.active {
     height: var(--size-3);
     background-color: transparent;
     border: 1px solid var(--gray-0);
+
+    &:focus-visible,
+    &:hover {
+      border-color: var(--yellow-9);
+      background-color: transparent;
+    }
+  }
+
+  &:focus-visible,
+  &:hover {
+    background-color: var(--yellow-9);
+    scale: 1.1;
   }
 }
 
 .carousel {
   display: flex;
   height: 100%;
-  transition: translate ease-out 250ms;
+  transition-property: translate;
+  transition-duration: 250ms;
+  transition-timing-function: var(--ease-out-3);
 }
 
 .slide-image {
   object-fit: cover;
   z-index: -1;
+  object-position: right;
 }
 
 .slide-container {
@@ -85,13 +103,19 @@
   padding: var(--size-2) var(--size-5);
   border-radius: var(--border-size-2);
   text-align: center;
+  outline: none;
 
   transition-property: color, scale;
   transition-duration: 250ms;
   transition-timing-function: var(--ease-elastic-2);
 
+  &:focus-visible,
   &:hover {
     color: var(--yellow-9);
     scale: 1.025;
+  }
+
+  &:active {
+    scale: 0.975;
   }
 }

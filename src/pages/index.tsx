@@ -1,5 +1,6 @@
 import Head from "next/head";
 import HomePageCarousel from "../components/homePageCarousel";
+import ShopLatest from "../components/ShopLatest";
 
 export default function Home() {
   return (
@@ -14,6 +15,8 @@ export default function Home() {
       </Head>
 
       <HomePageCarousel />
+
+      <ShopLatest />
     </>
   );
 }
