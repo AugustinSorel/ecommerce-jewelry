@@ -1,26 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Product, products } from "../../utils/products";
+import { ProductCarousel, productsCarousel } from "../../utils/products";
 import styles from "./index.module.scss";
 
-const Slide = ({ product }: { product: Product }) => {
-  if (!product.slide) {
-    return null;
-  }
-
+const Slide = ({ product }: { product: ProductCarousel }) => {
   return (
     <li className={styles["slide-container"]}>
       <Image
         src={product.slide}
-        alt={product.text}
+        alt={product.name}
         priority
         className={styles["slide-image"]}
         fill
       />
       <h2 className={styles["slide-text"]}>{product.text}</h2>
       <p className={styles["slide-price"]}>{product.price}</p>
-      <Link href={`products/${product.id}`} className={styles["slide-link"]}>
+      <Link href={product.path} className={styles["slide-link"]}>
         view product
       </Link>
     </li>
@@ -29,7 +25,6 @@ const Slide = ({ product }: { product: Product }) => {
 
 const HomePageCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const productsCarousel = products.filter((p) => p.slide);
 
   const goToNextSlide = () => {
     setCurrentIndex((prev) => {
