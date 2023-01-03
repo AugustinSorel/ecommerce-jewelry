@@ -8,7 +8,7 @@ const ShopLatest = () => {
       <h2 className={styles["title"]}>shop the latest</h2>
 
       <ul className={styles["grid"]}>
-        {products
+        {[...products]
           .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
           .slice(0, 6)
           .map((product) => (

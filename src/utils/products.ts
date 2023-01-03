@@ -1,23 +1,4 @@
-export type Product = {
-  id: string;
-  price: number;
-  name: string;
-  path: string;
-  images: String[];
-  coverImage: string;
-  createdAt: Date;
-};
-
-export type ProductCarousel = {
-  id: string;
-  price: number;
-  name: string;
-  path: string;
-  slide: string;
-  text: string;
-};
-
-export const productsCarousel: ProductCarousel[] = [
+export const productsCarousel = [
   {
     id: "791441b2-f93f-4d99-8508-b89d469d0ab4",
     price: 49.99,
@@ -42,9 +23,9 @@ export const productsCarousel: ProductCarousel[] = [
     slide: "/slides/slide-3.png",
     text: "Silver rounded erring",
   },
-];
+] as const;
 
-export const products: Product[] = [
+export const products = [
   {
     id: "eb6c14ec-014d-4c78-8355-5dc9c44a46e5",
     name: "lira earring",
@@ -99,4 +80,4 @@ export const products: Product[] = [
     coverImage: "/products/img-6.png",
     createdAt: new Date("20022-12-01"),
   },
-];
+] as const;
