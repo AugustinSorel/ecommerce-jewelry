@@ -1,5 +1,5 @@
 import { products } from "../../utils/products";
-import ProductItem from "../ProductItem";
+import GridOfProducts from "../GridOfProducts";
 import styles from "./index.module.scss";
 
 const ShopLatest = () => {
@@ -7,14 +7,11 @@ const ShopLatest = () => {
     <section className={styles["container"]}>
       <h2 className={styles["title"]}>shop the latest</h2>
 
-      <ul className={styles["grid"]}>
-        {[...products]
+      <GridOfProducts
+        products={[...products]
           .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
-          .slice(0, 6)
-          .map((product) => (
-            <ProductItem key={product.id} product={product} />
-          ))}
-      </ul>
+          .slice(0, 6)}
+      />
     </section>
   );
 };

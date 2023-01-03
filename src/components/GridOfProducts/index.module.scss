@@ -1,4 +1,11 @@
-.container {
+.grid {
+  list-style: none;
+  display: grid;
+  gap: var(--size-6) var(--size-4);
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+}
+
+.product-container {
   display: flex;
   flex-direction: column;
 }
