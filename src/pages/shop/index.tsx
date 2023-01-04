@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import DropDown from "../../components/Dropdown";
 import GridOfProducts from "../../components/GridOfProducts";
 import {
   maxProductPrice,
@@ -47,7 +48,7 @@ const RangeSlider = ({
   const maxPos = ((maxValue - min) / (max - min)) * 100;
 
   return (
-    <div className={styles["wrapper"]}>
+    <div className={styles["slider-wrapper"]}>
       <div className={styles["input-wrapper"]}>
         <input
           className={styles["input"]}
@@ -83,6 +84,8 @@ const RangeSlider = ({
   );
 };
 
+//TODO: create files //TODO: tab navigation for card
+
 const ShopPage = () => {
   const [value, setValue] = useState({
     min: minProductPrice,
@@ -107,24 +110,15 @@ const ShopPage = () => {
           </svg>
         </div>
 
-        <div className={styles["drop-down-container"]}>
-          <select name="shop by" className={styles["drop-down"]}>
-            <option value="">shop by</option>
-            {[
-              ...Array.from(
-                new Set(products.map((product) => product.category))
-              ),
-            ].map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-          <select name="sort by" className={styles["drop-down"]}>
-            <option value="">sort by</option>
-            <option value="price">price</option>
-            <option value="date">date</option>
-          </select>
+        <div className={styles["dropdown-container"]}>
+          <DropDown
+            defaultText={"shop by"}
+            options={Array.from(
+              new Set(products.map((product) => product.category))
+            )}
+          />
+
+          <DropDown defaultText={"sort by"} options={["price", "date"]} />
         </div>
 
         <div className={styles["range-slider-container"]}>
