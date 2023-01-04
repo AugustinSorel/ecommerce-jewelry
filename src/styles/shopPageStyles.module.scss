@@ -15,6 +15,7 @@
 .side-bar {
   display: flex;
   flex-direction: column;
+  gap: var(--size-8);
 }
 
 .search-container {
@@ -37,7 +38,6 @@
 }
 
 .drop-down-container {
-  margin: var(--size-8) 0;
   display: flex;
   flex-direction: column;
   gap: var(--size-4);
@@ -52,4 +52,115 @@
   border: 1px solid var(--gray-4);
   outline: none;
   cursor: pointer;
+}
+
+.range-slider-container {
+}
+
+.range-slider-text {
+  color: var(--gray-7);
+  margin-top: var(--size-2);
+}
+
+$thumb-size: 16px;
+
+@mixin track-styles {
+  appearance: none;
+  background: transparent;
+  border: transparent;
+}
+
+@mixin thumb-styles {
+  appearance: none;
+  pointer-events: all;
+  width: $thumb-size;
+  height: $thumb-size;
+  border-radius: 0px;
+  border: 0 none;
+  cursor: grab;
+  background-color: red;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: calc(#{$thumb-size});
+}
+
+.input-wrapper {
+  width: calc(100% + #{$thumb-size});
+  margin: 0 calc(#{$thumb-size} / -2);
+  position: absolute;
+  height: $thumb-size;
+}
+
+.control-wrapper {
+  width: 100%;
+  position: absolute;
+  height: $thumb-size;
+}
+
+.input {
+  position: absolute;
+  width: 100%;
+  pointer-events: none;
+  appearance: none;
+  height: 100%;
+  opacity: 0;
+  z-index: 3;
+  padding: 0;
+
+  &::-ms-track {
+    @include track-styles;
+  }
+
+  &::-moz-range-track {
+    @include track-styles;
+  }
+
+  &:focus::-webkit-slider-runnable-track {
+    @include track-styles;
+  }
+
+  &::-ms-thumb {
+    @include thumb-styles;
+  }
+
+  &::-moz-range-thumb {
+    @include thumb-styles;
+  }
+
+  &::-webkit-slider-thumb {
+    @include thumb-styles;
+  }
+}
+
+.rail {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  translate: 0 -50%;
+  height: 2px;
+  background: var(--gray-4);
+}
+
+.inner-rail {
+  position: absolute;
+  height: 100%;
+  background: var(--gray-12);
+}
+
+.control {
+  height: 12px;
+  width: 3px;
+  position: absolute;
+  background: var(--gray-12);
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+  z-index: 2;
 }
