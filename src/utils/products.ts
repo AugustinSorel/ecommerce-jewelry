@@ -94,3 +94,7 @@ export const products = [
 
 export const minProductPrice = Math.min(...products.map((p) => p.price));
 export const maxProductPrice = Math.max(...products.map((p) => p.price));
+
+export const productsCategories = Array.from(
+  new Set(products.map((product) => product.category))
+);
