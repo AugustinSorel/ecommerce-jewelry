@@ -9,7 +9,7 @@ import {
   products,
   productsCategories,
 } from "../../utils/products";
-import styles from "/src/styles/shopPageStyles.module.scss";
+import styles from "src/styles/shopPageStyles.module.scss";
 
 const ShopPage = () => {
   const [value, setValue] = useState({

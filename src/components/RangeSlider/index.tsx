@@ -44,6 +44,7 @@ const RangeSlider = ({
     <div className={styles["slider-wrapper"]}>
       <div className={styles["input-wrapper"]}>
         <input
+          aria-label="minimum slider"
           className={styles["input"]}
           type="range"
           value={minValue}
@@ -53,6 +54,7 @@ const RangeSlider = ({
           onChange={handleMinChange}
         />
         <input
+          aria-label="maximum slider"
           className={styles["input"]}
           type="range"
           value={maxValue}
