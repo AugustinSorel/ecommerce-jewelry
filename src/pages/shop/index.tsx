@@ -2,6 +2,7 @@ import { useState } from "react";
 import DropDown from "../../components/Dropdown";
 import GridOfProducts from "../../components/GridOfProducts";
 import RangeSlider from "../../components/RangeSlider";
+import SwitchButton from "../../components/SwitchButton";
 import {
   maxProductPrice,
   minProductPrice,
@@ -52,13 +53,13 @@ const ShopPage = () => {
           </p>
         </div>
 
-        <div>
-          <label>on sale</label>
-          <input />
+        <div className={styles["switch-button-container"]}>
+          <p className={styles["switch-button-text"]}>on sale</p>
+          <SwitchButton />
         </div>
-        <div>
-          <label>in stock</label>
-          <input />
+        <div className={styles["switch-button-container"]}>
+          <p className={styles["switch-button-text"]}>in stock</p>
+          <SwitchButton />
         </div>
       </aside>
 

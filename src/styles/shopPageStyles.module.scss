@@ -58,3 +58,13 @@
     margin-top: var(--size-3);
   }
 }
+
+.switch-button-container {
+  display: flex;
+  align-items: center;
+}
+
+.switch-button-text {
+  flex: 1;
+  text-transform: capitalize;
+}
