@@ -1,4 +1,11 @@
-.container {
+.grid {
+  list-style: none;
+  display: grid;
+  gap: var(--size-6) var(--size-4);
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+}
+
+.product-container {
   display: flex;
   flex-direction: column;
 }
@@ -8,6 +15,7 @@
   position: relative;
   overflow: hidden;
 
+  &:focus-within,
   &:hover {
     .product-action-container {
       opacity: 1;
@@ -35,11 +43,14 @@
   text-transform: capitalize;
   margin-top: var(--size-3);
   width: fit-content;
+  outline: none;
   position: relative;
 
   transition-property: color;
   transition-duration: 250ms;
   transition-timing-function: var(--ease-elastic-2);
+
+  &:focus,
   &:hover {
     color: var(--yellow-9);
 
@@ -73,6 +84,7 @@
   inset: 0;
   backdrop-filter: blur(4px);
   background-color: #00000010;
+  outline: none;
 
   display: flex;
   align-items: center;
@@ -91,7 +103,9 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  outline: none;
 
+  &:focus,
   &:hover {
     fill: var(--yellow-9);
   }

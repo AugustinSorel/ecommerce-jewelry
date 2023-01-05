@@ -1,3 +1,7 @@
+export type Product = typeof products[number];
+
+export type ProductCarousel = typeof productsCarousel[number];
+
 export const productsCarousel = [
   {
     id: "791441b2-f93f-4d99-8508-b89d469d0ab4",
@@ -34,6 +38,7 @@ export const products = [
     images: ["/products/img-1.png"],
     coverImage: "/products/img-1.png",
     createdAt: new Date("20022-12-01"),
+    category: "earring",
   },
   {
     id: "24db1045-3beb-41ce-9b19-548bf458529f",
@@ -43,6 +48,7 @@ export const products = [
     images: ["/products/img-2.png"],
     coverImage: "/products/img-2.png",
     createdAt: new Date("20022-12-01"),
+    category: "earring",
   },
   {
     id: "6f40eb48-0072-4ede-a3d3-ed020497e124",
@@ -52,6 +58,7 @@ export const products = [
     images: ["/products/img-3.png"],
     coverImage: "/products/img-3.png",
     createdAt: new Date("20022-12-01"),
+    category: "hair pin",
   },
   {
     id: "03295f6f-e34f-44c6-82d9-127f5b34b9b1",
@@ -61,6 +68,7 @@ export const products = [
     images: ["/products/img-4.png"],
     coverImage: "/products/img-4.png",
     createdAt: new Date("20022-12-01"),
+    category: "hair pin",
   },
   {
     id: "c79a9833-3a7b-4bbc-afca-0564844cc2d4",
@@ -70,6 +78,7 @@ export const products = [
     images: ["/products/img-5.png"],
     coverImage: "/products/img-5.png",
     createdAt: new Date("20022-12-01"),
+    category: "necklace",
   },
   {
     id: "e214cef6-f668-4ec3-a6ce-e8cd2a975cf9",
@@ -79,5 +88,13 @@ export const products = [
     images: ["/products/img-6.png"],
     coverImage: "/products/img-6.png",
     createdAt: new Date("20022-12-01"),
+    category: "hair pin",
   },
 ] as const;
+
+export const minProductPrice = Math.min(...products.map((p) => p.price));
+export const maxProductPrice = Math.max(...products.map((p) => p.price));
+
+export const productsCategories = Array.from(
+  new Set(products.map((product) => product.category))
+);

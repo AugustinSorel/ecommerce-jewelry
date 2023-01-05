@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCartStore } from "../../store/useCart";
-import { products } from "../../utils/products";
+import { Product } from "../../utils/products";
 import styles from "./index.module.scss";
 
-const ProductItem = ({ product }: { product: typeof products[number] }) => {
+const ProductItem = ({ product }: { product: Product }) => {
   const addItem = useCartStore((state) => state.addItem);
 
   return (
-    <li key={product.id} className={styles["container"]}>
+    <li key={product.id} className={styles["product-container"]}>
       <div className={styles["product-image-container"]}>
         <Image
           className={styles["product-image"]}
@@ -51,4 +51,14 @@ const ProductItem = ({ product }: { product: typeof products[number] }) => {
   );
 };
 
-export default ProductItem;
+const GridOfProducts = ({ products }: { products: Product[] }) => {
+  return (
+    <ul className={styles["grid"]}>
+      {products.map((product) => (
+        <ProductItem key={product.id} product={product} />
+      ))}
+    </ul>
+  );
+};
+
+export default GridOfProducts;

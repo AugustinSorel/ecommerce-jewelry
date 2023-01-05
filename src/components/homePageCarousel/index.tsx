@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { productsCarousel } from "../../utils/products";
+import { ProductCarousel, productsCarousel } from "../../utils/products";
 import styles from "./index.module.scss";
 
-const Slide = ({ product }: { product: typeof productsCarousel[number] }) => {
+const Slide = ({ product }: { product: ProductCarousel }) => {
   return (
     <li className={styles["slide-container"]}>
       <Image
