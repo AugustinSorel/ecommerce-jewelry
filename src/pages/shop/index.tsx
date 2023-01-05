@@ -6,10 +6,9 @@ import {
   maxProductPrice,
   minProductPrice,
   products,
+  productsCategories,
 } from "../../utils/products";
 import styles from "/src/styles/shopPageStyles.module.scss";
-
-//TODO: tab navigation for card
 
 const ShopPage = () => {
   const [value, setValue] = useState({
@@ -37,13 +36,7 @@ const ShopPage = () => {
         </div>
 
         <div className={styles["dropdown-container"]}>
-          <DropDown
-            defaultText={"shop by"}
-            options={Array.from(
-              new Set(products.map((product) => product.category))
-            )}
-          />
-
+          <DropDown defaultText={"shop by"} options={productsCategories} />
           <DropDown defaultText={"sort by"} options={["price", "date"]} />
         </div>
 

@@ -1,5 +1,5 @@
 .dropdown {
-  min-width: 300px;
+  max-width: 300px;
   position: relative;
   user-select: none;
 }
@@ -16,12 +16,17 @@
   cursor: pointer;
   fill: currentColor;
   outline: none;
+  transition: background-color 250ms ease;
+
+  &:focus,
+  &:hover {
+    background-color: var(--gray-1);
+  }
 }
 
 .dropdown-content {
   position: absolute;
   top: 110%;
-  padding: var(--size-4);
   background-color: var(--gray-0);
   box-shadow: var(--shadow-4);
   width: 100%;
@@ -34,15 +39,13 @@
 
 .dropdown-item {
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background-color 250ms ease;
   text-transform: capitalize;
-
-  &:not(:first-child) {
-    margin-top: var(--size-4);
-  }
+  padding: var(--size-4);
 
   &:focus,
   &:hover {
     text-decoration: underline;
+    background-color: var(--gray-1);
   }
 }
