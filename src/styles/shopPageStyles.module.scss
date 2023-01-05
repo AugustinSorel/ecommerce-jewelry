@@ -24,6 +24,12 @@
   display: flex;
   border-bottom: 1px solid var(--gray-4);
   padding-bottom: var(--size-2);
+  transition: border-color 250ms var(--ease-2);
+
+  &:focus-within,
+  &:hover {
+    border-color: currentColor;
+  }
 }
 
 .search-input {
