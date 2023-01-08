@@ -17,6 +17,14 @@
   top: 0;
   padding: var(--size-4) 0;
 
+  &::after {
+    content: "";
+    background-color: var(--gray-0);
+    inset: 0;
+    position: absolute;
+    z-index: -1;
+  }
+
   @include svg;
 
   h1 {
@@ -260,5 +268,56 @@
     place-content: center;
     text-align: center;
     padding: var(--size-4) 0;
+  }
+}
+
+.toaster-container {
+  position: absolute;
+  z-index: -1;
+  top: 100%;
+  width: 100%;
+  background-color: var(--gray-3);
+  border-top: 1px solid var(--yellow-9);
+  padding: var(--size-4) var(--size-6);
+  display: flex;
+  fill: var(--yellow-9);
+  gap: var(--size-4);
+
+  animation: in 250ms var(--ease-3);
+
+  @keyframes in {
+    from {
+      top: 0;
+    }
+  }
+
+  &.remove {
+    animation: remove 250ms var(--ease-3) forwards;
+
+    @keyframes remove {
+      to {
+        top: 0;
+      }
+    }
+  }
+}
+
+.toaster-text {
+  flex: 1;
+
+  strong {
+    text-decoration: underline;
+    font-weight: 500;
+  }
+}
+
+.toaster-button {
+  text-transform: uppercase;
+  color: var(--yellow-9);
+  font-weight: var(--font-weight-6);
+  font-size: var(--font-size-1);
+
+  &:hover {
+    text-decoration: underline;
   }
 }

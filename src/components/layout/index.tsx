@@ -42,14 +42,45 @@ const MobileMenu = () => {
   );
 };
 
-const Toaster = ({ onClose }: { onClose: () => void }) => {
+const Toaster = ({
+  onClose,
+  itemName,
+}: {
+  onClose: () => void;
+  itemName: string;
+}) => {
+  const [startExitingAnimation, setStartExitingAnimation] = useState(false);
+
   useEffect(() => {
-    const timeoutId = setTimeout(() => onClose(), 3000);
+    const timeoutId = setTimeout(
+      () => setStartExitingAnimation(() => true),
+      3000
+    );
 
     return () => clearTimeout(timeoutId);
   }, [onClose]);
 
-  return <h1>hello world</h1>;
+  return (
+    <div
+      className={`${styles["toaster-container"]} ${
+        startExitingAnimation ? styles["remove"] : ""
+      }`}
+      onAnimationEnd={() => startExitingAnimation && onClose()}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
+        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z" />
+      </svg>
+      <p className={styles["toaster-text"]}>
+        <strong>{itemName}</strong> added successfuly to your shopping bag
+      </p>
+      <button className={styles["toaster-button"]}>view car</button>
+    </div>
+  );
 };
 
 const Header = ({
@@ -60,20 +91,19 @@ const Header = ({
   toggleIsMobileMenuOpen: () => void;
 }) => {
   const router = useRouter();
-  const { getNumberOfItems, items } = useCartStore();
+  const { getNumberOfItems, lastItemAdded } = useCartStore();
 
   const [showToaster, setShowToaster] = useState(false);
 
   const handleCloseToaster = () => {
-    setShowToaster(false);
+    setShowToaster(() => false);
   };
 
   useEffect(() => {
     if (getNumberOfItems() > 0) {
       setShowToaster(() => true);
-      console.log("show toaster");
     }
-  }, [items]);
+  }, [getNumberOfItems()]);
 
   return (
     <header className={styles.header}>
@@ -119,8 +149,14 @@ const Header = ({
             className={isMobileMenuOpen ? styles["open"] : ""}
           />
         </svg>
-      </button>{" "}
-      {showToaster && <Toaster onClose={handleCloseToaster} />}
+      </button>
+      {showToaster && lastItemAdded && (
+        <Toaster
+          key={getNumberOfItems()}
+          onClose={handleCloseToaster}
+          itemName={lastItemAdded.name}
+        />
+      )}
     </header>
   );
 };
