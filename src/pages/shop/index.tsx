@@ -12,10 +12,15 @@ import {
 import styles from "src/styles/shopPageStyles.module.scss";
 
 const ShopPage = () => {
+  const [searchValue, setSearchValue] = useState("");
   const [value, setValue] = useState({
     min: minProductPrice,
     max: maxProductPrice,
   });
+
+  const productsFiltered = [...products].filter((product) =>
+    product.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
   return (
     <section className={styles["container"]}>
@@ -26,6 +31,8 @@ const ShopPage = () => {
             type="text"
             placeholder="Search"
             className={styles["search-input"]}
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
           />
           <svg
             viewBox="0 0 24 24"
@@ -63,7 +70,7 @@ const ShopPage = () => {
         </div>
       </aside>
 
-      <GridOfProducts products={[...products]} />
+      <GridOfProducts products={productsFiltered} />
     </section>
   );
 };

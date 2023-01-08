@@ -53,6 +53,10 @@ const ProductItem = ({ product }: { product: Product }) => {
 };
 
 const GridOfProducts = ({ products }: { products: Product[] }) => {
+  if (products.length < 1) {
+    return <h2 className={styles["no-products-text"]}>no products</h2>;
+  }
+
   return (
     <ul className={styles["grid"]}>
       {products.map((product) => (
