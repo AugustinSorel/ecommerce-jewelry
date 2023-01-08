@@ -114,3 +114,9 @@
   transition-duration: 250ms;
   transition-timing-function: var(--ease-elastic-2);
 }
+
+.no-products-text {
+  margin: auto;
+  font-weight: 400;
+  text-transform: capitalize;
+}
