@@ -1,14 +1,16 @@
 import create from "zustand";
-import { products } from "../utils/products";
+import { Product, products } from "../utils/products";
 
 type Cart = {
   items: Map<string, number>;
   addItem: (itemId: typeof products[number]["id"]) => void;
   getNumberOfItems: () => number;
+  lastItemAdded: Product | null;
 };
 
 export const useCartStore = create<Cart>((set, get) => ({
   items: new Map(),
+  lastItemAdded: null,
 
   addItem: (itemId) => {
     set((state) => {
@@ -16,6 +18,7 @@ export const useCartStore = create<Cart>((set, get) => ({
 
       return {
         items: new Map(state.items).set(itemId, quantityIncremented),
+        lastItemAdded: products.find((p) => p.id === itemId),
       };
     });
   },

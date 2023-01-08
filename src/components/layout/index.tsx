@@ -42,6 +42,47 @@ const MobileMenu = () => {
   );
 };
 
+const Toaster = ({
+  onClose,
+  itemName,
+}: {
+  onClose: () => void;
+  itemName: string;
+}) => {
+  const [startExitingAnimation, setStartExitingAnimation] = useState(false);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(
+      () => setStartExitingAnimation(() => true),
+      3000
+    );
+
+    return () => clearTimeout(timeoutId);
+  }, [onClose]);
+
+  return (
+    <div
+      className={`${styles["toaster-container"]} ${
+        startExitingAnimation ? styles["remove"] : ""
+      }`}
+      onAnimationEnd={() => startExitingAnimation && onClose()}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
+        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.959 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z" />
+      </svg>
+      <p className={styles["toaster-text"]}>
+        <strong>{itemName}</strong> added successfuly to your shopping bag
+      </p>
+      <button className={styles["toaster-button"]}>view car</button>
+    </div>
+  );
+};
+
 const Header = ({
   isMobileMenuOpen,
   toggleIsMobileMenuOpen,
@@ -50,14 +91,25 @@ const Header = ({
   toggleIsMobileMenuOpen: () => void;
 }) => {
   const router = useRouter();
-  const { getNumberOfItems } = useCartStore();
+  const { getNumberOfItems, lastItemAdded } = useCartStore();
+
+  const [showToaster, setShowToaster] = useState(false);
+
+  const handleCloseToaster = () => {
+    setShowToaster(() => false);
+  };
+
+  useEffect(() => {
+    if (getNumberOfItems() > 0) {
+      setShowToaster(() => true);
+    }
+  }, [getNumberOfItems()]);
 
   return (
     <header className={styles.header}>
       <h1 className={allerta.className}>
         <Link href={"/"}>shoppe</Link>
       </h1>
-
       <nav>
         {[
           { href: "/shop", text: "shop" },
@@ -75,7 +127,6 @@ const Header = ({
           </Link>
         ))}
       </nav>
-
       <button aria-label="search">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="m15.97 17.031c-1.479 1.238-3.384 1.985-5.461 1.985-4.697 0-8.509-3.812-8.509-8.508s3.812-8.508 8.509-8.508c4.695 0 8.508 3.812 8.508 8.508 0 2.078-.747 3.984-1.985 5.461l4.749 4.75c.146.146.219.338.219.531 0 .587-.537.75-.75.75-.192 0-.384-.073-.531-.22zm-5.461-13.53c-3.868 0-7.007 3.14-7.007 7.007s3.139 7.007 7.007 7.007c3.866 0 7.007-3.14 7.007-7.007s-3.141-7.007-7.007-7.007z" />
@@ -99,6 +150,13 @@ const Header = ({
           />
         </svg>
       </button>
+      {showToaster && lastItemAdded && (
+        <Toaster
+          key={getNumberOfItems()}
+          onClose={handleCloseToaster}
+          itemName={lastItemAdded.name}
+        />
+      )}
     </header>
   );
 };

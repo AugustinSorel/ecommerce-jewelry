@@ -16,6 +16,7 @@ const ProductItem = ({ product }: { product: Product }) => {
           width={300}
           height={300}
           alt={`product image for ${product.name}`}
+          priority
         />
         <div className={styles["product-action-container"]}>
           <button
