@@ -1,6 +1,7 @@
 export type Product = typeof products[number];
-
+export type ProductCategories = typeof products[number]["category"];
 export type ProductCarousel = typeof productsCarousel[number];
+export type SortProductsBy = typeof SORT_PRODUCTS_BY[number];
 
 export const productsCarousel = [
   {
@@ -95,6 +96,7 @@ export const products = [
 export const minProductPrice = Math.min(...products.map((p) => p.price));
 export const maxProductPrice = Math.max(...products.map((p) => p.price));
 
-export const productsCategories = Array.from(
+export const PRODUCTS_CATEGORIES = Array.from(
   new Set(products.map((product) => product.category))
 );
+export const SORT_PRODUCTS_BY = Array.from(new Set(["price", "date"] as const));

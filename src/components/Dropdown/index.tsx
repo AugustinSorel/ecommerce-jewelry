@@ -1,24 +1,25 @@
 import { useState } from "react";
 import styles from "./index.module.scss";
 
-const DropDown = ({
+function DropDown<T extends string>({
   options,
   defaultText,
+  onChange,
 }: {
-  options: string[];
+  options: T[];
   defaultText: string;
-}) => {
-  const [selectedOption, setSelectedOption] = useState<
-    typeof options[number] | null
-  >(null);
+  onChange: (e: T) => void;
+}) {
+  const [selectedOption, setSelectedOption] = useState<T | null>(null);
   const [isContentOpen, setIsContentOpen] = useState(false);
   const toggleShowContent = () => setIsContentOpen((prev) => !prev);
   const closeContent = () => setIsContentOpen(() => false);
   const openContent = () => setIsContentOpen(() => true);
 
-  const changeHandler = (option: typeof options[number]) => {
+  const changeHandler = (option: T) => {
     setSelectedOption(option);
     closeContent();
+    onChange(option);
   };
 
   return (
@@ -62,6 +63,6 @@ const DropDown = ({
       )}
     </div>
   );
-};
+}
 
 export default DropDown;
