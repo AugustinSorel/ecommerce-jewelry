@@ -1,23 +1,24 @@
 import { useState } from "react";
 import styles from "./index.module.scss";
 
-const DropDown = ({
+function DropDown<T extends string | null>({
   options,
   defaultText,
+  onChange,
+  selectedOption,
 }: {
-  options: string[];
+  options: T[];
   defaultText: string;
-}) => {
-  const [selectedOption, setSelectedOption] = useState<
-    typeof options[number] | null
-  >(null);
+  onChange: (e: T | null) => void;
+  selectedOption: T;
+}) {
   const [isContentOpen, setIsContentOpen] = useState(false);
   const toggleShowContent = () => setIsContentOpen((prev) => !prev);
   const closeContent = () => setIsContentOpen(() => false);
   const openContent = () => setIsContentOpen(() => true);
 
-  const changeHandler = (option: typeof options[number]) => {
-    setSelectedOption(option);
+  const changeHandler = (option: T | null) => {
+    onChange(option);
     closeContent();
   };
 
@@ -47,6 +48,14 @@ const DropDown = ({
       </div>
       {isContentOpen && (
         <div className={styles["dropdown-content"]}>
+          <p
+            className={styles["dropdown-item"]}
+            onClick={() => changeHandler(null)}
+            onKeyDown={(e) => e.key === "Enter" && changeHandler(null)}
+            tabIndex={0}
+          >
+            {defaultText}
+          </p>
           {options.map((option) => (
             <p
               key={option}
@@ -62,6 +71,6 @@ const DropDown = ({
       )}
     </div>
   );
-};
+}
 
 export default DropDown;

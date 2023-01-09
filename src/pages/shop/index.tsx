@@ -6,21 +6,43 @@ import SwitchButton from "../../components/SwitchButton";
 import {
   maxProductPrice,
   minProductPrice,
+  ProductCategories,
   products,
-  productsCategories,
+  PRODUCTS_CATEGORIES,
+  SortProductsBy,
+  SORT_PRODUCTS_BY,
 } from "../../utils/products";
 import styles from "src/styles/shopPageStyles.module.scss";
 
 const ShopPage = () => {
   const [searchValue, setSearchValue] = useState("");
+  const [shopByValue, setShopByValue] = useState<ProductCategories | null>(
+    null
+  );
+  const [sortProductsBy, setSortProductsBy] = useState<SortProductsBy | null>(
+    null
+  );
   const [value, setValue] = useState({
     min: minProductPrice,
     max: maxProductPrice,
   });
 
-  const productsFiltered = [...products].filter((product) =>
-    product.name.toLowerCase().includes(searchValue.toLowerCase())
-  );
+  const productsFiltered = [...products]
+    .filter((product) =>
+      product.name.toLowerCase().includes(searchValue.toLowerCase())
+    )
+    .filter((product) => !shopByValue || product.category === shopByValue)
+    .sort((a, b) => {
+      if (sortProductsBy === "price") {
+        return a.price - b.price;
+      }
+
+      if (sortProductsBy === "date") {
+        return a.createdAt.getTime() - b.createdAt.getTime();
+      }
+
+      return 0;
+    });
 
   return (
     <section className={styles["container"]}>
@@ -44,8 +66,18 @@ const ShopPage = () => {
         </div>
 
         <div className={styles["dropdown-container"]}>
-          <DropDown defaultText={"shop by"} options={productsCategories} />
-          <DropDown defaultText={"sort by"} options={["price", "date"]} />
+          <DropDown<typeof shopByValue>
+            defaultText={"shop by"}
+            options={PRODUCTS_CATEGORIES}
+            onChange={(e) => setShopByValue(e)}
+            selectedOption={shopByValue}
+          />
+          <DropDown<typeof sortProductsBy>
+            defaultText={"sort by"}
+            options={SORT_PRODUCTS_BY}
+            onChange={(e) => setSortProductsBy(e)}
+            selectedOption={sortProductsBy}
+          />
         </div>
 
         <div className={styles["range-slider-container"]}>
