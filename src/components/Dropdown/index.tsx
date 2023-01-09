@@ -1,25 +1,25 @@
 import { useState } from "react";
 import styles from "./index.module.scss";
 
-function DropDown<T extends string>({
+function DropDown<T extends string | null>({
   options,
   defaultText,
   onChange,
+  selectedOption,
 }: {
   options: T[];
   defaultText: string;
-  onChange: (e: T) => void;
+  onChange: (e: T | null) => void;
+  selectedOption: T;
 }) {
-  const [selectedOption, setSelectedOption] = useState<T | null>(null);
   const [isContentOpen, setIsContentOpen] = useState(false);
   const toggleShowContent = () => setIsContentOpen((prev) => !prev);
   const closeContent = () => setIsContentOpen(() => false);
   const openContent = () => setIsContentOpen(() => true);
 
-  const changeHandler = (option: T) => {
-    setSelectedOption(option);
-    closeContent();
+  const changeHandler = (option: T | null) => {
     onChange(option);
+    closeContent();
   };
 
   return (
@@ -48,6 +48,14 @@ function DropDown<T extends string>({
       </div>
       {isContentOpen && (
         <div className={styles["dropdown-content"]}>
+          <p
+            className={styles["dropdown-item"]}
+            onClick={() => changeHandler(null)}
+            onKeyDown={(e) => e.key === "Enter" && changeHandler(null)}
+            tabIndex={0}
+          >
+            {defaultText}
+          </p>
           {options.map((option) => (
             <p
               key={option}

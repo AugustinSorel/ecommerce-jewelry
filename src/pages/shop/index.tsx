@@ -66,15 +66,17 @@ const ShopPage = () => {
         </div>
 
         <div className={styles["dropdown-container"]}>
-          <DropDown<ProductCategories>
+          <DropDown<typeof shopByValue>
             defaultText={"shop by"}
             options={PRODUCTS_CATEGORIES}
             onChange={(e) => setShopByValue(e)}
+            selectedOption={shopByValue}
           />
-          <DropDown<SortProductsBy>
+          <DropDown<typeof sortProductsBy>
             defaultText={"sort by"}
             options={SORT_PRODUCTS_BY}
             onChange={(e) => setSortProductsBy(e)}
+            selectedOption={sortProductsBy}
           />
         </div>
 
