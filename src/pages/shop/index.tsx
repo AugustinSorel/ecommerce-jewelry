@@ -22,7 +22,7 @@ const ShopPage = () => {
   const [sortProductsBy, setSortProductsBy] = useState<SortProductsBy | null>(
     null
   );
-  const [value, setValue] = useState({
+  const [priceRange, setPriceRange] = useState({
     min: minProductPrice,
     max: maxProductPrice,
   });
@@ -32,6 +32,10 @@ const ShopPage = () => {
       product.name.toLowerCase().includes(searchValue.toLowerCase())
     )
     .filter((product) => !shopByValue || product.category === shopByValue)
+    .filter(
+      (product) =>
+        product.price >= priceRange.min && product.price <= priceRange.max
+    )
     .sort((a, b) => {
       if (sortProductsBy === "price") {
         return a.price - b.price;
@@ -84,11 +88,11 @@ const ShopPage = () => {
           <RangeSlider
             min={minProductPrice}
             max={maxProductPrice}
-            onChange={setValue}
-            value={value}
+            onChange={setPriceRange}
+            value={priceRange}
           />
           <p className={styles["range-slider-text"]}>
-            Price: ${value.min} - ${value.max}
+            Price: ${priceRange.min} - ${priceRange.max}
           </p>
         </div>
 
