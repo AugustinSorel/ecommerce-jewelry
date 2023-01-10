@@ -1,0 +1,108 @@
+.container {
+  display: flex;
+  gap: var(--size-8);
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
+}
+
+.product-details-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-title {
+  font-weight: 400;
+  text-transform: capitalize;
+  margin-bottom: var(--size-4);
+}
+
+.product-price {
+  color: var(--yellow-9);
+}
+
+.product-description-title {
+  text-transform: capitalize;
+  font-weight: 500;
+  margin-top: auto;
+}
+
+.product-description {
+  margin-top: var(--size-4);
+}
+
+.add-to-cart-container {
+  display: flex;
+  gap: var(--size-4);
+  margin: auto 0;
+
+  @media screen and (max-width: 1000px) {
+    margin: var(--size-4);
+  }
+}
+
+.add-to-cart-number-picker {
+  display: flex;
+  background-color: var(--gray-4);
+  align-items: center;
+  border-radius: var(--border-size-3);
+  padding: var(--size-2);
+  font-size: var(--font-size-3);
+
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
+}
+
+.add-to-cart-number-picker-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 var(--size-3);
+}
+
+.add-to-cart-button {
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 1px solid currentColor;
+  font-weight: 600;
+  padding: var(--size-3);
+  width: max(50%, 300px);
+  font-size: var(--font-size-1);
+  border-radius: var(--border-size-3);
+  cursor: pointer;
+  transition-property: background-color, border-color, box-shadow, scale;
+  transition-duration: 250ms;
+  transition-timing-function: var(--ease-2);
+
+  &:hover {
+    background-color: var(--yellow-9);
+    border-color: var(--yellow-9);
+    box-shadow: var(--shadow-4);
+  }
+
+  &:active {
+    scale: 0.98;
+  }
+}
+
+.category-text {
+  text-transform: capitalize;
+  font-weight: 300;
+
+  strong {
+    font-weight: 500;
+  }
+}
+
+.similar-items-container {
+  margin-top: var(--size-8);
+}
+
+.similar-items-title {
+  margin-bottom: var(--size-4);
+  text-transform: capitalize;
+  font-weight: 400;
+}
