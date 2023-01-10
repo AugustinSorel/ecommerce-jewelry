@@ -81,6 +81,10 @@
     background-color: var(--yellow-9);
     border-color: var(--yellow-9);
     box-shadow: var(--shadow-4);
+
+    @media screen and (max-width: 1000px) {
+      box-shadow: var(--shadow-2);
+    }
   }
 
   &:active {
