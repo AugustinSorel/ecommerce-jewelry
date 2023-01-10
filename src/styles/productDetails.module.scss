@@ -99,6 +99,22 @@
 
 .similar-items-container {
   margin-top: var(--size-8);
+
+  ul {
+    @media screen and (max-width: 1000px) {
+      display: flex !important;
+      width: 100%;
+      overflow: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: var(--size-2);
+
+      div {
+        height: 300px;
+        width: 300px;
+        scroll-snap-align: start;
+      }
+    }
+  }
 }
 
 .similar-items-title {

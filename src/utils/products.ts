@@ -2,6 +2,7 @@ export type Product = typeof products[number];
 export type ProductCategories = typeof products[number]["category"];
 export type ProductCarousel = typeof productsCarousel[number];
 export type SortProductsBy = typeof SORT_PRODUCTS_BY[number];
+export type ProductsImages = typeof products[number]["coverImage"];
 
 export const productsCarousel = [
   {
