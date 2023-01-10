@@ -81,7 +81,7 @@ const ProductPage = ({
 export const getStaticPaths: GetStaticPaths = () => {
   return {
     paths: products.map((product) => ({
-      params: { index: product.id },
+      params: { index: product.path },
     })),
     fallback: "blocking",
   };
@@ -89,8 +89,8 @@ export const getStaticPaths: GetStaticPaths = () => {
 
 export const getStaticProps: GetStaticProps = (context) => {
   const product = products.find(
-    (product) => product.path === `/products/${(context.params ?? {}).index}`
-  );
+    (product) => product.path === (context.params ?? {}).index
+  )!;
 
   if (!product) {
     return {
