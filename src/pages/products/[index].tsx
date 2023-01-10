@@ -1,14 +1,13 @@
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
-import { products } from "../../utils/products";
+import { Product, products } from "../../utils/products";
 import styles from "src/styles/productDetails.module.scss";
 import { useState } from "react";
 import { useCartStore } from "../../store/useCart";
 import GridOfProducts from "../../components/GridOfProducts";
 
-const ProductPage = ({
-  product,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+//TODO: change the createdAt type
+const ProductPage = ({ product }: { product: Product }) => {
   const addItem = useCartStore((state) => state.addItem);
 
   const [quantity, setQuantity] = useState(0);
@@ -65,7 +64,11 @@ const ProductPage = ({
       </div>
       <div className={styles["similar-items-container"]}>
         <h2 className={styles["similar-items-title"]}>similar items</h2>
-        <GridOfProducts products={products.slice(0, 4)} />
+        <GridOfProducts
+          products={product.similarProducts.map((productId) => {
+            return products.find((product) => product.id === productId);
+          })}
+        />
       </div>
     </>
   );
@@ -82,7 +85,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 
 export const getStaticProps: GetStaticProps = (context) => {
   const product = products.find(
-    (product) => product.path === `products/${(context.params ?? {}).index}`
+    (product) => product.path === `/products/${(context.params ?? {}).index}`
   );
 
   if (!product) {
