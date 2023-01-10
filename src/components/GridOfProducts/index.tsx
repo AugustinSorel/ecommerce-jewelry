@@ -30,7 +30,7 @@ const ProductItem = ({ product }: { product: Product }) => {
           </button>
           <Link
             aria-label={`view product ${product.name}`}
-            href={product.path}
+            href={`/products/${product.path}`}
             className={styles["svg-button"]}
           >
             <svg viewBox="0 0 24 24">
