@@ -6,10 +6,12 @@ import { useState } from "react";
 import { useCartStore } from "../../store/useCart";
 import GridOfProducts from "../../components/GridOfProducts";
 
-//TODO: change the createdAt type
-const ProductPage = ({ product }: { product: Product }) => {
+const ProductPage = ({
+  product,
+}: {
+  product: Omit<Product, "createdAt"> & { createdAt: string };
+}) => {
   const addItem = useCartStore((state) => state.addItem);
-
   const [quantity, setQuantity] = useState(0);
   const incrementQuantity = () => setQuantity((prev) => prev + 1);
   const decrementQuantity = () =>
