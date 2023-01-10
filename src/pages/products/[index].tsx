@@ -65,9 +65,11 @@ const ProductPage = ({ product }: { product: Product }) => {
       <div className={styles["similar-items-container"]}>
         <h2 className={styles["similar-items-title"]}>similar items</h2>
         <GridOfProducts
-          products={product.similarProducts.map((productId) => {
-            return products.find((product) => product.id === productId);
-          })}
+          products={product.similarProducts.map(
+            (productId) =>
+              products.find((product) => product.id === productId) ??
+              products[0]
+          )}
         />
       </div>
     </>
