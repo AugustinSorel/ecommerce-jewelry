@@ -1,6 +1,10 @@
 .container {
   display: flex;
   gap: var(--size-8);
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
 }
 
 .product-details-container {
@@ -33,6 +37,10 @@
   display: flex;
   gap: var(--size-4);
   margin: auto 0;
+
+  @media screen and (max-width: 1000px) {
+    margin: var(--size-4);
+  }
 }
 
 .add-to-cart-number-picker {
@@ -42,6 +50,10 @@
   border-radius: var(--border-size-3);
   padding: var(--size-2);
   font-size: var(--font-size-3);
+
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 }
 
 .add-to-cart-number-picker-button {
