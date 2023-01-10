@@ -42,54 +42,84 @@ export const products = [
     category: "earring",
     description:
       "Our earrings are the perfect addition to any outfit. These beautiful earrings feature a stunning design, with intricate details and sparkling gemstones. The earrings are made from high-quality materials, ensuring durability and long-lasting wear. They are lightweight and comfortable to wear, making them ideal for everyday use. Whether you're dressing up for a night out or simply want to add some sparkle to your everyday look, these earrings are sure to turn heads. Plus, with their affordable price and easy-to-use ecommerce app, purchasing these earrings has never been easier. So why wait? Add some sparkle to your life today with these stunning earrings!",
+    similarProducts: [
+      "24db1045-3beb-41ce-9b19-548bf458529f",
+      "6f40eb48-0072-4ede-a3d3-ed020497e124",
+      "03295f6f-e34f-44c6-82d9-127f5b34b9b1",
+      "e214cef6-f668-4ec3-a6ce-e8cd2a975cf9",
+    ],
   },
   {
     id: "24db1045-3beb-41ce-9b19-548bf458529f",
     name: "hal earrings",
     price: 25,
-    path: "products/hal-earrings",
+    path: "/products/hal-earrings",
     images: ["/products/img-2.png"],
     coverImage: "/products/img-2.png",
     createdAt: new Date("20022-12-01"),
     category: "earring",
     description:
       "Introducing our stunning earrings, perfect for any occasion! These earrings feature a unique design, with sparkling gemstones and intricate details that are sure to catch the eye. Made from high-quality materials, these earrings are durable and comfortable to wear all day long. Whether you're dressing up for a special event or simply adding some sparkle to your everyday look, these earrings are the perfect choice. Plus, with their affordable price and easy-to-use ecommerce app, purchasing these earrings has never been simpler. Don't miss out on this opportunity to add some glamour to your life - buy these earrings today!",
+    similarProducts: [
+      "e214cef6-f668-4ec3-a6ce-e8cd2a975cf9",
+      "eb6c14ec-014d-4c78-8355-5dc9c44a46e5",
+      "6f40eb48-0072-4ede-a3d3-ed020497e124",
+      "03295f6f-e34f-44c6-82d9-127f5b34b9b1",
+    ],
   },
   {
     id: "6f40eb48-0072-4ede-a3d3-ed020497e124",
     name: "kaede hair pin set of 3",
     price: 30,
-    path: "products/kaede-hair-pin-set-of-three",
+    path: "/products/kaede-hair-pin-set-of-three",
     images: ["/products/img-3.png"],
     coverImage: "/products/img-3.png",
     createdAt: new Date("20022-12-01"),
     category: "hair pin",
     description:
       "Looking for the perfect finishing touch to your hairstyle? Our hair pin set is the answer! These beautiful hair pins feature a chic, minimalist design that is perfect for any occasion. The set includes three hair pins, each with a unique design and sparkling gemstones. Made from high-quality materials, these hair pins are durable and comfortable to wear all day long. Whether you're heading to work, a special event, or simply want to add some sparkle to your everyday look, these hair pins are the perfect choice. Plus, with their affordable price and easy-to-use ecommerce app, purchasing these hair pins has never been simpler. Don't miss out on this opportunity to add some glamour to your life - buy our hair pin set today!",
+    similarProducts: [
+      "eb6c14ec-014d-4c78-8355-5dc9c44a46e5",
+      "c79a9833-3a7b-4bbc-afca-0564844cc2d4",
+      "e214cef6-f668-4ec3-a6ce-e8cd2a975cf9",
+      "03295f6f-e34f-44c6-82d9-127f5b34b9b1",
+    ],
   },
   {
     id: "03295f6f-e34f-44c6-82d9-127f5b34b9b1",
     name: "hair pin set of 3",
     price: 30,
-    path: "products/hair-pin-set-of-three",
+    path: "/products/hair-pin-set-of-three",
     images: ["/products/img-4.png"],
     coverImage: "/products/img-4.png",
     createdAt: new Date("20022-12-01"),
     category: "hair pin",
     description:
       "Add some sparkle to your life with our beautiful hair pin set! These hair pins feature a chic, minimalist design that is perfect for any occasion. The set includes three hair pins, each with a unique design and sparkling gemstones. Made from high-quality materials, these hair pins are durable and comfortable to wear all day long. Whether you're heading to work, a special event, or simply want to add some sparkle to your everyday look, these hair pins are the perfect choice. Plus, with their affordable price and easy-to-use ecommerce app, purchasing these hair pins has never been easier. Don't wait any longer - add some glamour to your life with our hair pin set today!",
+    similarProducts: [
+      "eb6c14ec-014d-4c78-8355-5dc9c44a46e5",
+      "c79a9833-3a7b-4bbc-afca-0564844cc2d4",
+      "24db1045-3beb-41ce-9b19-548bf458529f",
+      "e214cef6-f668-4ec3-a6ce-e8cd2a975cf9",
+    ],
   },
   {
     id: "c79a9833-3a7b-4bbc-afca-0564844cc2d4",
     name: "plaine necklace",
     price: 19,
-    path: "products/plaine-necklace",
+    path: "/products/plaine-necklace",
     images: ["/products/img-5.png"],
     coverImage: "/products/img-5.png",
     createdAt: new Date("20022-12-01"),
     category: "necklace",
     description:
       "Introducing our stunning necklace, the perfect addition to any outfit! This beautiful necklace features a unique design, with sparkling gemstones and intricate details that are sure to catch the eye. Made from high-quality materials, this necklace is durable and comfortable to wear all day long. Whether you're dressing up for a special event or simply want to add some sparkle to your everyday look, this necklace is the perfect choice. Plus, with its affordable price and easy-to-use ecommerce app, purchasing this necklace has never been simpler. Don't wait any longer - add some glamour to your life with our stunning necklace today!",
+    similarProducts: [
+      "eb6c14ec-014d-4c78-8355-5dc9c44a46e5",
+      "6f40eb48-0072-4ede-a3d3-ed020497e124",
+      "e214cef6-f668-4ec3-a6ce-e8cd2a975cf9",
+      "24db1045-3beb-41ce-9b19-548bf458529f",
+    ],
   },
   {
     id: "e214cef6-f668-4ec3-a6ce-e8cd2a975cf9",
@@ -102,6 +132,12 @@ export const products = [
     category: "hair pin",
     description:
       "Introducing our stylish hair pin set, perfect for adding some sparkle to any outfit! These hair pins feature a chic, minimalist design that is sure to complement any hairstyle. The set includes three hair pins, each with a unique design and sparkling gemstones. Made from high-quality materials, these hair pins are durable and comfortable to wear all day long. Whether you're dressing up for a special event or simply want to add some glamour to your everyday look, these hair pins are the perfect choice. Plus, with their affordable price and easy-to-use ecommerce app, purchasing these hair pins has never been simpler. Don't miss out on this opportunity to add some sparkle to your life - buy our hair pin set today!",
+    similarProducts: [
+      "eb6c14ec-014d-4c78-8355-5dc9c44a46e5",
+      "6f40eb48-0072-4ede-a3d3-ed020497e124",
+      "03295f6f-e34f-44c6-82d9-127f5b34b9b1",
+      "24db1045-3beb-41ce-9b19-548bf458529f",
+    ],
   },
 ] as const;
 
