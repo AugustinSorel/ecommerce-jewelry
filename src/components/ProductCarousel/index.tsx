@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 import { ProductsImages } from "../../utils/products";
 import styles from "./index.module.scss";
 
@@ -44,6 +44,28 @@ const ProductCarousel = ({ coverImage }: { coverImage: ProductsImages }) => {
     return () => clearInterval(interval);
   }, [goToNextSlide]);
 
+  const [magnifierStyle, setMagnifierStyle] = useState({});
+  const overflowContainerRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!overflowContainerRef.current) return;
+
+    const imgPosition = overflowContainerRef.current.getBoundingClientRect();
+    const imgHeight = overflowContainerRef.current.clientHeight;
+    const imgWidth = overflowContainerRef.current.clientWidth;
+
+    const posX = e.clientX - imgPosition.left;
+    const posY = e.clientY - imgPosition.top;
+
+    const percX = (posX / imgWidth) * 100;
+    const percY = (posY / imgHeight) * 100;
+    const perc = percX + "% " + percY + "%";
+
+    setMagnifierStyle(() => ({
+      backgroundPosition: perc,
+    }));
+  };
+
   return (
     <div className={styles["container"]}>
       <nav className={styles["jump-to-container"]}>
@@ -66,8 +88,12 @@ const ProductCarousel = ({ coverImage }: { coverImage: ProductsImages }) => {
         ))}
       </nav>
       <div className={styles["carousel-container"]}>
-        <div className={styles["overflow-container"]}>
+        <div
+          className={styles["overflow-container"]}
+          ref={overflowContainerRef}
+        >
           <ul
+            onMouseMove={handleMouseMove}
             className={styles["carousel"]}
             style={{
               height: `calc(100% * ${productImages.size})`,
@@ -81,6 +107,17 @@ const ProductCarousel = ({ coverImage }: { coverImage: ProductsImages }) => {
             ))}
           </ul>
         </div>
+
+        <div
+          role="img"
+          className={styles["magnifier"]}
+          style={{
+            backgroundImage: `url(${Array.from(productImages).at(
+              currentIndex
+            )})`,
+            ...magnifierStyle,
+          }}
+        />
         <nav
           className={styles["active-bar"]}
           style={{
