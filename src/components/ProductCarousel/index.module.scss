@@ -129,3 +129,27 @@
   justify-content: center;
   padding-left: var(--size-4);
 }
+
+.magnifier {
+  position: fixed;
+  top: var(--size-4);
+  bottom: var(--size-4);
+  left: 50%;
+  width: 40%;
+  border-radius: var(--border-size-4);
+  background-size: 300%;
+  pointer-events: none;
+  z-index: 1000;
+  display: none;
+  opacity: 0;
+  box-shadow: var(--shadow-5);
+
+  .carousel-container:hover & {
+    display: block;
+    opacity: 1;
+  }
+
+  @media screen and (max-width: 1000px) {
+    display: none !important;
+  }
+}
