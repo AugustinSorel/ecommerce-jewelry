@@ -2,13 +2,14 @@ export type Product = typeof products[number];
 export type ProductCategories = typeof products[number]["category"];
 export type ProductCarousel = typeof productsCarousel[number];
 export type SortProductsBy = typeof SORT_PRODUCTS_BY[number];
+export type ProductsImages = typeof products[number]["coverImage"];
 
 export const productsCarousel = [
   {
     id: "791441b2-f93f-4d99-8508-b89d469d0ab4",
     price: 49.99,
     name: "Jade hoops",
-    path: "jade-hoops",
+    path: "lira-earring",
     slide: "/slides/slide-1.png",
     text: "Gold big hoops",
   },
@@ -16,7 +17,7 @@ export const productsCarousel = [
     id: "6b2031e4-9c05-4ae6-9759-98568959e96b",
     price: 20,
     name: "Alice ring",
-    path: "alice-ring",
+    path: "hal-earrings",
     slide: "/slides/slide-2.png",
     text: "Pure elgence ring",
   },
@@ -24,7 +25,7 @@ export const productsCarousel = [
     id: "f042c1a3-d924-4c93-b131-b26d8b753f65",
     price: 30,
     name: "Belle earring",
-    path: "belle-earring",
+    path: "kaede-hair-pin-set-of-three",
     slide: "/slides/slide-3.png",
     text: "Silver rounded erring",
   },

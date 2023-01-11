@@ -5,6 +5,7 @@ import styles from "src/styles/productDetails.module.scss";
 import { useState } from "react";
 import { useCartStore } from "../../store/useCart";
 import GridOfProducts from "../../components/GridOfProducts";
+import ProductCarousel from "../../components/ProductCarousel";
 
 const ProductPage = ({
   product,
@@ -12,22 +13,15 @@ const ProductPage = ({
   product: Omit<Product, "createdAt"> & { createdAt: string };
 }) => {
   const addItem = useCartStore((state) => state.addItem);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const incrementQuantity = () => setQuantity((prev) => prev + 1);
   const decrementQuantity = () =>
-    setQuantity((prev) => (prev === 0 ? 0 : prev - 1));
+    setQuantity((prev) => (prev === 1 ? 1 : prev - 1));
 
   return (
     <>
       <div className={styles["container"]}>
-        <Image
-          src={product.coverImage}
-          width={500}
-          height={500}
-          alt="product image"
-          priority
-        />
-
+        <ProductCarousel coverImage={product.coverImage} />
         <div className={styles["product-details-container"]}>
           <h2 className={styles["product-title"]}>{product.name}</h2>
           <p className={styles["product-price"]}>$ {product.price}</p>

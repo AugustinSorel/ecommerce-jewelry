@@ -16,7 +16,7 @@ const Slide = ({ product }: { product: ProductCarousel }) => {
       />
       <h2 className={styles["slide-text"]}>{product.text}</h2>
       <p className={styles["slide-price"]}>{product.price}</p>
-      <Link href={product.path} className={styles["slide-link"]}>
+      <Link href={`products/${product.path}`} className={styles["slide-link"]}>
         view product
       </Link>
     </li>
