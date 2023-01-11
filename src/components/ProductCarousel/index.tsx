@@ -90,6 +90,7 @@ const ProductCarousel = ({ coverImage }: { coverImage: ProductsImages }) => {
         >
           {Array.from(productImages).map((_, index) => (
             <button
+              aria-label={`view slide image ${index}`}
               key={index}
               className={styles["active-bar-button"]}
               onClick={() => jumpToSlide(index)}

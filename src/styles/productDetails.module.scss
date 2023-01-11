@@ -90,6 +90,10 @@
   &:active {
     scale: 0.98;
   }
+
+  @media screen and (max-width: 1000px) {
+    margin: 0 auto;
+  }
 }
 
 .category-text {
