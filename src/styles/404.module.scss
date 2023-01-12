@@ -1,0 +1,34 @@
+.container {
+  margin: var(--size-4) 0;
+  height: 100%;
+  display: grid;
+  place-content: center;
+  gap: var(--size-10);
+  text-align: center;
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.main-text {
+  font-weight: 400;
+  color: var(--gray-7);
+}
+
+.home-link {
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  border-radius: var(--border-size-3);
+  padding: var(--size-2) 0;
+  transition-property: background-color, color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: var(--ease-elastic-2);
+
+  &:hover {
+    background-color: var(--gray-11);
+    color: var(--gray-0);
+    box-shadow: var(--shadow-3);
+  }
+}
