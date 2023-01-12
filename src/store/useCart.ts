@@ -1,25 +1,35 @@
 import create from "zustand";
-import { Product, products } from "../utils/products";
+import { findProductById, Product, ProductsIds } from "../utils/products";
 
 type Cart = {
-  items: Map<string, number>;
-  addItem: (itemId: typeof products[number]["id"], quantity?: number) => void;
-  getNumberOfItems: () => number;
+  items: Map<ProductsIds, number>;
   lastItemAdded: Product | null;
+  addItem: (itemId: ProductsIds, quantity?: number) => void;
+  isCartOpen: boolean;
+  getNumberOfItems: () => number;
+  openCart: () => void;
+  closeCart: () => void;
+  removeItem: (itemId: ProductsIds) => void;
 };
 
 export const useCartStore = create<Cart>((set, get) => ({
   items: new Map(),
   lastItemAdded: null,
+  isCartOpen: false,
 
   addItem: (itemId, quantity) => {
     set((state) => {
       const quantityIncremented =
         (state.items.get(itemId) ?? 0) + (quantity ?? 1);
 
+      if (quantityIncremented < 1) {
+        get().removeItem(itemId);
+        return {};
+      }
+
       return {
         items: new Map(state.items).set(itemId, quantityIncremented),
-        lastItemAdded: products.find((p) => p.id === itemId),
+        lastItemAdded: findProductById(itemId),
       };
     });
   },
@@ -29,5 +39,18 @@ export const useCartStore = create<Cart>((set, get) => ({
       (prev, curr) => prev + curr,
       0
     );
+  },
+
+  openCart: () => set(() => ({ isCartOpen: true })),
+
+  closeCart: () => set(() => ({ isCartOpen: false })),
+
+  removeItem: (itemId) => {
+    set((state) => {
+      state.items.delete(itemId);
+      return {
+        items: state.items,
+      };
+    });
   },
 }));
