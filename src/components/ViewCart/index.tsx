@@ -91,7 +91,11 @@ const ViewCart = () => {
             );
           })}
         </ul>
-        <p className={styles["checkout-link"]}>proceed to checkout</p>
+        {getNumberOfItems() > 0 && (
+          <Link className={styles["checkout-link"]} href={"/checkout"}>
+            proceed to checkout
+          </Link>
+        )}
       </div>
     </div>,
 
