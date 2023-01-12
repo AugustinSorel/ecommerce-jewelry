@@ -1,8 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import Image from "next/image";
 import { Product, products } from "../../utils/products";
 import styles from "src/styles/productDetails.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCartStore } from "../../store/useCart";
 import GridOfProducts from "../../components/GridOfProducts";
 import ProductCarousel from "../../components/ProductCarousel";
@@ -17,6 +16,8 @@ const ProductPage = ({
   const incrementQuantity = () => setQuantity((prev) => prev + 1);
   const decrementQuantity = () =>
     setQuantity((prev) => (prev === 1 ? 1 : prev - 1));
+
+  useEffect(() => setQuantity(() => 1), [product]);
 
   return (
     <>

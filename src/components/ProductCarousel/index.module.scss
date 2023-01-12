@@ -144,7 +144,7 @@
   opacity: 0;
   box-shadow: var(--shadow-5);
 
-  .carousel-container:hover & {
+  .overflow-container:hover & {
     display: block;
     opacity: 1;
   }

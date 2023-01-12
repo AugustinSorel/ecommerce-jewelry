@@ -3,6 +3,7 @@ export type ProductCategories = typeof products[number]["category"];
 export type ProductCarousel = typeof productsCarousel[number];
 export type SortProductsBy = typeof SORT_PRODUCTS_BY[number];
 export type ProductsImages = typeof products[number]["coverImage"];
+export type ProductsIds = typeof products[number]["id"];
 
 export const productsCarousel = [
   {
@@ -149,3 +150,7 @@ export const PRODUCTS_CATEGORIES = Array.from(
   new Set(products.map((product) => product.category))
 );
 export const SORT_PRODUCTS_BY = Array.from(new Set(["price", "date"] as const));
+
+export const findProductById = (id: ProductsIds) => {
+  return products.find((product) => product.id === id)!;
+};

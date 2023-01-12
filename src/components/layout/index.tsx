@@ -4,6 +4,7 @@ import styles from "./index.module.scss";
 import { Allerta_Stencil } from "@next/font/google";
 import { useRouter } from "next/router";
 import { useCartStore } from "../../store/useCart";
+import ViewCart from "../ViewCart";
 
 const allerta = Allerta_Stencil({ weight: "400", subsets: ["latin"] });
 
@@ -50,6 +51,7 @@ const Toaster = ({
   itemName: string;
 }) => {
   const [startExitingAnimation, setStartExitingAnimation] = useState(false);
+  const openCart = useCartStore((state) => state.openCart);
 
   useEffect(() => {
     const timeoutId = setTimeout(
@@ -78,7 +80,9 @@ const Toaster = ({
       <p className={styles["toaster-text"]}>
         <strong>{itemName}</strong> added successfuly to your shopping bag
       </p>
-      <button className={styles["toaster-button"]}>view car</button>
+      <button className={styles["toaster-button"]} onClick={openCart}>
+        view car
+      </button>
     </div>
   );
 };
@@ -91,7 +95,9 @@ const Header = ({
   toggleIsMobileMenuOpen: () => void;
 }) => {
   const router = useRouter();
-  const { getNumberOfItems, lastItemAdded } = useCartStore();
+  const { getNumberOfItems, lastItemAdded, items } = useCartStore();
+  const openCart = useCartStore((state) => state.openCart);
+  const isCartOpen = useCartStore((state) => state.isCartOpen);
 
   const [showToaster, setShowToaster] = useState(false);
 
@@ -100,10 +106,10 @@ const Header = ({
   };
 
   useEffect(() => {
-    if (getNumberOfItems() > 0) {
+    if (getNumberOfItems() > 0 && !isCartOpen) {
       setShowToaster(() => true);
     }
-  }, [getNumberOfItems()]);
+  }, [items]);
 
   return (
     <header className={styles.header}>
@@ -132,7 +138,11 @@ const Header = ({
           <path d="m15.97 17.031c-1.479 1.238-3.384 1.985-5.461 1.985-4.697 0-8.509-3.812-8.509-8.508s3.812-8.508 8.509-8.508c4.695 0 8.508 3.812 8.508 8.508 0 2.078-.747 3.984-1.985 5.461l4.749 4.75c.146.146.219.338.219.531 0 .587-.537.75-.75.75-.192 0-.384-.073-.531-.22zm-5.461-13.53c-3.868 0-7.007 3.14-7.007 7.007s3.139 7.007 7.007 7.007c3.866 0 7.007-3.14 7.007-7.007s-3.141-7.007-7.007-7.007z" />
         </svg>
       </button>
-      <button aria-label="cart" data-number-of-items={getNumberOfItems()}>
+      <button
+        aria-label="cart"
+        data-number-of-items={getNumberOfItems()}
+        onClick={openCart}
+      >
         <svg viewBox="0 0 24 24">
           <path d="M4.558 7l4.701-4.702c.199-.198.46-.298.721-.298.613 0 1.02.505 1.02 1.029 0 .25-.092.504-.299.711l-3.26 3.26h-2.883zm12.001 0h2.883l-4.701-4.702c-.199-.198-.46-.298-.721-.298-.613 0-1.02.505-1.02 1.029 0 .25.092.504.299.711l3.26 3.26zm3.703 4l-.016.041-3.598 8.959h-9.296l-3.597-8.961-.016-.039h16.523zm3.738-2h-24v2h.643c.534 0 1.021.304 1.256.784l4.101 10.216h12l4.102-10.214c.233-.481.722-.786 1.256-.786h.642v-2z" />
         </svg>
@@ -215,6 +225,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
 
   const toggleIsMobileMenuOpen = () => setIsMobileMenuOpen((prev) => !prev);
+  const isCartOpen = useCartStore((state) => state.isCartOpen);
 
   useEffect(() => setIsMobileMenuOpen(() => false), [router.asPath]);
 
@@ -226,6 +237,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       />
       <main>{isMobileMenuOpen ? <MobileMenu /> : children}</main>
       {!isMobileMenuOpen && <Footer />}
+      {isCartOpen && <ViewCart />}
     </>
   );
 };
