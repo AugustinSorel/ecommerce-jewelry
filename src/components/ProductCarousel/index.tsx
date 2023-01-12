@@ -91,9 +91,9 @@ const ProductCarousel = ({ coverImage }: { coverImage: ProductsImages }) => {
         <div
           className={styles["overflow-container"]}
           ref={overflowContainerRef}
+          onMouseMove={handleMouseMove}
         >
           <ul
-            onMouseMove={handleMouseMove}
             className={styles["carousel"]}
             style={{
               height: `calc(100% * ${productImages.size})`,
@@ -106,18 +106,19 @@ const ProductCarousel = ({ coverImage }: { coverImage: ProductsImages }) => {
               <Slide key={image} image={image} />
             ))}
           </ul>
+
+          <div
+            role="img"
+            className={styles["magnifier"]}
+            style={{
+              backgroundImage: `url(${Array.from(productImages).at(
+                currentIndex
+              )})`,
+              ...magnifierStyle,
+            }}
+          />
         </div>
 
-        <div
-          role="img"
-          className={styles["magnifier"]}
-          style={{
-            backgroundImage: `url(${Array.from(productImages).at(
-              currentIndex
-            )})`,
-            ...magnifierStyle,
-          }}
-        />
         <nav
           className={styles["active-bar"]}
           style={{
