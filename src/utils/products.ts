@@ -34,7 +34,7 @@ export const productsCarousel = [
 
 export const products = [
   {
-    id: "eb6c14ec-014d-4c78-8355-5dc9c44a46e5",
+    id: "price_1MPt1SCE9h0p6qkdT1IIMCH6",
     name: "lira earring",
     price: 20,
     path: "lira-earring",
@@ -52,7 +52,7 @@ export const products = [
     ],
   },
   {
-    id: "24db1045-3beb-41ce-9b19-548bf458529f",
+    id: "price_1MPt4ICE9h0p6qkdMys64Awb",
     name: "hal earrings",
     price: 25,
     path: "hal-earrings",
@@ -70,7 +70,7 @@ export const products = [
     ],
   },
   {
-    id: "6f40eb48-0072-4ede-a3d3-ed020497e124",
+    id: "price_1MPt4jCE9h0p6qkd732av4bq",
     name: "kaede hair pin set of 3",
     price: 30,
     path: "kaede-hair-pin-set-of-three",
@@ -88,7 +88,7 @@ export const products = [
     ],
   },
   {
-    id: "03295f6f-e34f-44c6-82d9-127f5b34b9b1",
+    id: "price_1MPt5ECE9h0p6qk${window.location.origin}?session_id{CHECKOUT_SESSION_ID}dnytXFzWJ",
     name: "hair pin set of 3",
     price: 30,
     path: "hair-pin-set-of-three",
@@ -106,7 +106,7 @@ export const products = [
     ],
   },
   {
-    id: "c79a9833-3a7b-4bbc-afca-0564844cc2d4",
+    id: "price_1MPt5fCE9h0p6qkdeRUrewSm",
     name: "plaine necklace",
     price: 19,
     path: "plaine-necklace",
@@ -124,7 +124,7 @@ export const products = [
     ],
   },
   {
-    id: "e214cef6-f668-4ec3-a6ce-e8cd2a975cf9",
+    id: "price_1MPt61CE9h0p6qkdSWCL4MJl",
     name: "yuki hair pin set of 3",
     price: 29,
     path: "yuki-hair-pin-set-of-three",
