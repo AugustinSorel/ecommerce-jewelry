@@ -160,7 +160,7 @@ const Header = ({
           />
         </svg>
       </button>
-      {showToaster && lastItemAdded && (
+      {showToaster && lastItemAdded && !isCartOpen && (
         <Toaster
           key={getNumberOfItems()}
           onClose={handleCloseToaster}

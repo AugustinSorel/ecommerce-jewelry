@@ -168,5 +168,20 @@
   margin-top: var(--size-8);
   text-align: center;
   border-radius: var(--radius-2);
-  box-shadow: var(--shadow-3);
+  box-shadow: var(--shadow-1);
+  border: none;
+  cursor: pointer;
+  transition-property: box-shadow, scale;
+  transition-duration: 250ms;
+  transition-timing-function: var(--ease-elastic-2);
+
+  &:hover {
+    box-shadow: var(--shadow-4);
+    scale: 1.03;
+  }
+}
+
+.checkout-price {
+  text-align: right;
+  float: right;
 }

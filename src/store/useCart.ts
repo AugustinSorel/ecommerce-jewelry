@@ -10,6 +10,7 @@ type Cart = {
   openCart: () => void;
   closeCart: () => void;
   removeItem: (itemId: ProductsIds) => void;
+  getCartPrice: () => number;
 };
 
 export const useCartStore = create<Cart>((set, get) => ({
@@ -35,10 +36,7 @@ export const useCartStore = create<Cart>((set, get) => ({
   },
 
   getNumberOfItems: () => {
-    return [...Array.from(get().items.values())].reduce(
-      (prev, curr) => prev + curr,
-      0
-    );
+    return [...get().items.values()].reduce((prev, curr) => prev + curr, 0);
   },
 
   openCart: () => set(() => ({ isCartOpen: true })),
@@ -52,5 +50,13 @@ export const useCartStore = create<Cart>((set, get) => ({
         items: state.items,
       };
     });
+  },
+
+  getCartPrice: () => {
+    return [...get().items].reduce(
+      (prev, [itemId, quantity]) =>
+        prev + findProductById(itemId).price * quantity,
+      0
+    );
   },
 }));

@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { useCartStore } from "../../store/useCart";
+import { checkout } from "../../utils/checkout";
 import { findProductById } from "../../utils/products";
 import styles from "./index.module.scss";
 
@@ -12,6 +12,7 @@ const ViewCart = () => {
   const deleteItem = useCartStore((state) => state.removeItem);
   const addItem = useCartStore((state) => state.addItem);
   const getNumberOfItems = useCartStore((state) => state.getNumberOfItems);
+  const getCartPrice = useCartStore((state) => state.getCartPrice);
   const [startExitingAnimation, setStartExitingAnimation] = useState(false);
 
   return createPortal(
@@ -92,9 +93,28 @@ const ViewCart = () => {
           })}
         </ul>
         {getNumberOfItems() > 0 && (
-          <Link className={styles["checkout-link"]} href={"/checkout"}>
-            proceed to checkout
-          </Link>
+          <>
+            <p>
+              subtotal ({getNumberOfItems()} item{getNumberOfItems() > 1 && "s"}
+              )
+              <span className={styles["checkout-price"]}>
+                ${getCartPrice()}
+              </span>
+            </p>
+            <button
+              className={styles["checkout-link"]}
+              onClick={() =>
+                checkout({
+                  lineItems: [...items].map(([itemId, quantity]) => ({
+                    price: itemId,
+                    quantity,
+                  })),
+                })
+              }
+            >
+              proceed to checkout
+            </button>
+          </>
         )}
       </div>
     </div>,
