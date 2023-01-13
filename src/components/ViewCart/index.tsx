@@ -12,6 +12,7 @@ const ViewCart = () => {
   const deleteItem = useCartStore((state) => state.removeItem);
   const addItem = useCartStore((state) => state.addItem);
   const getNumberOfItems = useCartStore((state) => state.getNumberOfItems);
+  const getCartPrice = useCartStore((state) => state.getCartPrice);
   const [startExitingAnimation, setStartExitingAnimation] = useState(false);
 
   return createPortal(
@@ -92,9 +93,18 @@ const ViewCart = () => {
           })}
         </ul>
         {getNumberOfItems() > 0 && (
-          <Link className={styles["checkout-link"]} href={"/checkout"}>
-            proceed to checkout
-          </Link>
+          <>
+            <p>
+              subtotal ({getNumberOfItems()} item{getNumberOfItems() > 1 && "s"}
+              )
+              <span className={styles["checkout-price"]}>
+                ${getCartPrice()}
+              </span>
+            </p>
+            <Link className={styles["checkout-link"]} href={"/checkout"}>
+              proceed to checkout
+            </Link>
+          </>
         )}
       </div>
     </div>,
