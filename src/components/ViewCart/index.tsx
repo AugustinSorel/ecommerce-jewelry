@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { useCartStore } from "../../store/useCart";
+import { checkout } from "../../utils/checkout";
 import { findProductById } from "../../utils/products";
 import styles from "./index.module.scss";
 
@@ -101,9 +101,19 @@ const ViewCart = () => {
                 ${getCartPrice()}
               </span>
             </p>
-            <Link className={styles["checkout-link"]} href={"/checkout"}>
+            <button
+              className={styles["checkout-link"]}
+              onClick={() =>
+                checkout({
+                  lineItems: [...items].map(([itemId, quantity]) => ({
+                    price: itemId,
+                    quantity,
+                  })),
+                })
+              }
+            >
               proceed to checkout
-            </Link>
+            </button>
           </>
         )}
       </div>
