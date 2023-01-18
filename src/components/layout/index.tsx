@@ -16,7 +16,6 @@ const MobileMenu = () => {
           { href: "/", text: "home" },
           { href: "/shop", text: "shop" },
           { href: "/about", text: "about" },
-          { href: "/blog", text: "blog" },
           { href: "/help", text: "help" },
           { href: "/contact", text: "contact" },
           { href: "/search", text: "search" },
@@ -119,7 +118,6 @@ const Header = ({
       <nav>
         {[
           { href: "/shop", text: "shop" },
-          { href: "/blog", text: "blog" },
           { href: "/our-story", text: "our story" },
         ].map((link) => (
           <Link
