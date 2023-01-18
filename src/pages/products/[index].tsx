@@ -87,8 +87,6 @@ export const getStaticProps: GetStaticProps = (context) => {
     (product) => product.path === (context.params ?? {}).index
   )!;
 
-  console.log(product, context);
-
   if (!product) {
     return {
       redirect: {
