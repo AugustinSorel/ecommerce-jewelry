@@ -25,11 +25,11 @@ const OurStoryPage = () => {
       <p className={styles["paragraph"]}>
         At our ecommerce jewelry app, we are always on the lookout for the
         latest trends in the world of jewelry. From chunky statement pieces to
-        delicate and dainty designs, we strive to bring you the best of what's
-        hot and happening. Our collection is constantly updated with new designs
-        that reflect the latest trends in fashion and jewelry. Whether you're
-        looking for a bold and daring statement piece or something more
-        understated and elegant, we have something for everyone.
+        delicate and dainty designs, we strive to bring you the best of
+        what&lsquo;s hot and happening. Our collection is constantly updated
+        with new designs that reflect the latest trends in fashion and jewelry.
+        Whether you&lsquo;re looking for a bold and daring statement piece or
+        something more understated and elegant, we have something for everyone.
       </p>
 
       <h3 className={styles["paragraph-title"]}>produced with care</h3>
